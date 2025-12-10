@@ -340,7 +340,7 @@ def plot_atmosphere_1D(atmosphere_2D, Lx: int, Ly: int, savefig: bool):
     profile = atmosphere_2D[mid_y, :]
     x_axis = np.arange(Lx) - (Lx // 2) #center x axis
     
-    # 3. Calculate limits for consistent plotting
+    #calculate limits for consistent plotting
     epsilon = 1e-15
     data_abs = np.abs(profile) + epsilon
     peak_val = np.max(data_abs)
