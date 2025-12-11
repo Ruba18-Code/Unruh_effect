@@ -35,7 +35,7 @@ def minkowsky_H(Lx: int, Ly: int, t0=1.0):
             if m < Lx - 1:
                 j_x = site_index(Ly, m + 1, n)
                 
-                # Jump coefficient from Eq. (29)
+                # Jump coefficient from paper
                 val = -t0 * np.exp(1j * np.pi / 2 * (m - n))
                 
                 # c_j_x^\dagger * c_i
@@ -52,7 +52,7 @@ def minkowsky_H(Lx: int, Ly: int, t0=1.0):
             if n < Ly - 1:
                 j_y = site_index(Ly, m, n + 1) 
                 
-                # Jump coefficient from Eq. (29)
+                # Jump coefficient from paper
                 val = -t0 * np.exp(1j * np.pi / 2 * (m - n))
 
                 # c_j_y^\dagger * c_i
@@ -75,7 +75,7 @@ def minkowsky_H(Lx: int, Ly: int, t0=1.0):
 
 def rindler_H(Lx: int, Ly: int, c=2.0):
     """
-    This function builds the Rindler Hamiltonian defined in the paper 'Synthetic Unruh effect in cold atoms'.add()
+    This function builds the Rindler Hamiltonian defined in the paper 'Synthetic Unruh effect in cold atoms'
     It takes the grid size (Lx and Ly) as inputs. The tunneling parameter (t_r) is defined as 'c/Lx', where 'c' is a
     constant that controls the strenght of the tunneling. 
     It returns the Hamiltonian as a QuTip matrix and as a SciPy C00 matrix. 
@@ -89,14 +89,15 @@ def rindler_H(Lx: int, Ly: int, c=2.0):
     for m in range(Lx):
         for n in range(Ly):
             i = site_index(Ly, m, n)
-            #Since an event horizon in created at m=0, we want to put this value in the middle, because we want the horizon in the center of the lattice
+            #Since an event horizon in created at m=0, we want to put this value in the middle, 
+            # because we want the horizon in the center of the lattice
             #Therefore, we redefine the coordinates as:
             m_coord = m - (Lx // 2)
             # If we're not at the edge of the lattice, perform a jump in X from (m,n) to (m+1,n)
             if m < Lx - 1:
                 j_x = site_index(Ly, m + 1, n)
                 
-                # Jump coefficient from Eq. (29)
+                # Jump coefficient from paper
                 val = - (m_coord+1/2)*t_r * np.exp(1j * np.pi / 2 * (m - n))
                 
                 # c_j_x^\dagger * c_i
@@ -229,7 +230,7 @@ def gaussian_event_horizon(Lx: int, Ly: int, times: list, H_M, H_R, savefig: boo
 def event_horizon_animation(Lx: int, Ly: int, times: list, H_M, H_R, verbose: bool, saveanim: bool, frames=60):
     """
     This function creates an animation (a video) showing the propagation of the wavepacket towards the event horizon
-    It returns the animation. In order to display it, set verbose=1. In order to save it, set saveanim=1.
+    It returns the animation. In order to display it, set verbose=True. In order to save it, set saveanim=True.
     """
 
     #define time interval
