@@ -29,14 +29,3 @@ This project models the interaction between an accelerated Unruh-DeWitt detector
 * ⚛️ **Unruh-DeWitt Detector:** Two-level system interacting with quantum fields along non-inertial trajectories.
 * 📈 **Quantum State Dynamics:** Time evolution solved numerically with QuTiP's master equation solvers.
 * 🌌 **Thermal Bath Statistics:** Evaluation of field excitations, transition rates, and Planckian distribution profiles.
-
----
-
-### 📂 Repository Structure
-
-```text
-.
-├── Figures/                   # Plots and animated GIFs
-│   └── wave_animation.gif     # Field excitation animation
-├── Unruh_effect.ipynb         # Main simulation notebook
-└── README.md                  # Project documentation
